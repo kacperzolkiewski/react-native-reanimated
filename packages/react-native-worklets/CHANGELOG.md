@@ -6,6 +6,8 @@
 
 ### 🛠 Breaking changes
 
+- Omit empty worklet closures and export closure-free worklets directly in Bundle Mode without factory wrappers. ([#10517](https://github.com/software-mansion/react-native-reanimated/pull/10517) by [@tshmieldev](https://github.com/tshmieldev))
+- Store worklet closures as arrays instead of objects. ([#10506](https://github.com/software-mansion/react-native-reanimated/pull/10506) by [@tshmieldev](https://github.com/tshmieldev))
 - Remove the Serializable handle - `SerializableInitializer`, `createSerializableInitializer` and the `__init` clone path are gone. `Serializable::ValueType::HandleType` stays in the Compat Stable API enum for ABI compatibility and `extractSerializable` throws for it. ([#10414](https://github.com/software-mansion/react-native-reanimated/pull/10414) by [@tjzel](https://github.com/tjzel))
 - `makeShareable` now serializes its value eagerly into a retaining Serializable instead of rebuilding it lazily on each runtime through a handle. ([#10412](https://github.com/software-mansion/react-native-reanimated/pull/10412) by [@tjzel](https://github.com/tjzel))
 - Remove worklet context objects from the Babel plugin. ([#10411](https://github.com/software-mansion/react-native-reanimated/pull/10411) by [@tjzel](https://github.com/tjzel))
@@ -42,6 +44,9 @@
 
 ### 💡 Others
 
+- Validate the iOS Swift Package Manager integration in CI: the nightly compatibility check now builds the app via SPM on React Native >= 0.87. ([#10511](https://github.com/software-mansion/react-native-reanimated/pull/10511) by [@kacperzolkiewski](https://github.com/kacperzolkiewski))
+- Build `nativeLoggingHook` for Worklet Runtimes natively instead of reading React Native's host function from the RN Runtime. ([#10488](https://github.com/software-mansion/react-native-reanimated/pull/10488) by [@tjzel](https://github.com/tjzel))
+- Drop the `RCTEventEmitter` base class from `WorkletsModule` on iOS. The module never emitted events, so it now inherits from `NSObject` and declares the `bridge` property itself. ([#10485](https://github.com/software-mansion/react-native-reanimated/pull/10485) by [@tjzel](https://github.com/tjzel))
 - Pass arguments to batched UI worklets separately instead of capturing them in wrapper worklets, reducing worklet serialization. ([#10466](https://github.com/software-mansion/react-native-reanimated/pull/10466) by [@tshmieldev](https://github.com/tshmieldev))
 - Mark the special-case `__proto__` object reconstruction path as unlikely. ([#10465](https://github.com/software-mansion/react-native-reanimated/pull/10465) by [@tshmieldev](https://github.com/tshmieldev))
 - Update the sponsors section in the README. ([#10347](https://github.com/software-mansion/react-native-reanimated/pull/10347) by [@m-bert](https://github.com/m-bert))
